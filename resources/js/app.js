@@ -4,11 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-const { default: Vuetify } = require("vuetify");
+// const { default: Vuetify } = require("vuetify");
 
 require("./bootstrap");
 
 window.Vue = require("vue");
+
+import Vuetify from "../plugins/vuetify";
 
 /**
  * The following block of code may be used to automatically register your
