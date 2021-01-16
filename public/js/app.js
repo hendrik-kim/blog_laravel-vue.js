@@ -1970,6 +1970,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     source: String
@@ -1978,6 +1986,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       drawer: null
     };
+  },
+  methods: {
+    logout: function logout() {
+      axios.post("/logout").then(function (res) {
+        window.location.href = "login";
+      });
+    }
   }
 });
 
@@ -40031,6 +40046,25 @@ var render = function() {
                       _c(
                         "v-list-item-content",
                         [_c("v-list-item-title", [_vm._v("Contact")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item",
+                    { attrs: { link: "" }, on: { click: _vm.logout } },
+                    [
+                      _c(
+                        "v-list-item-action",
+                        [_c("v-icon", [_vm._v("mdi-power")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item-content",
+                        [_c("v-list-item-title", [_vm._v("Log out")])],
                         1
                       )
                     ],

@@ -19,6 +19,14 @@
                             <v-list-item-title>Contact</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
+                    <v-list-item link @click="logout">
+                        <v-list-item-action>
+                            <v-icon>mdi-power</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-content>
+                            <v-list-item-title>Log out</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
                 </v-list>
             </v-navigation-drawer>
 
@@ -65,10 +73,16 @@ export default {
     props: {
         source: String
     },
-
     data: () => ({
         drawer: null
-    })
+    }),
+    methods: {
+        logout() {
+            axios.post("/logout").then(res => {
+                window.location.href = "login";
+            });
+        }
+    }
 };
 </script>
 
