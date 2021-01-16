@@ -24,7 +24,10 @@
                             <v-icon>mdi-power</v-icon>
                         </v-list-item-action>
                         <v-list-item-content>
-                            <v-list-item-title>Log out</v-list-item-title>
+                            <v-list-item-title
+                                >Log out
+                                {{ currentUser.first }}</v-list-item-title
+                            >
                         </v-list-item-content>
                     </v-list-item>
                 </v-list>
@@ -76,12 +79,29 @@ export default {
     data: () => ({
         drawer: null
     }),
+    computed: {
+        loggedIn: {
+            get() {
+                return this.$store.state.currentUser.loggedIn;
+            }
+        },
+        currentUser: {
+            get() {
+                return this.$store.state.currentUser.user;
+            }
+        }
+    },
     methods: {
         logout() {
             axios.post("/logout").then(res => {
                 window.location.href = "login";
             });
         }
+    },
+    created() {
+        axios.default.header.common["Autorization"] =
+            "bearer " + localStorage.getItem("blog_token");
+        this.$store.dispatch("currentUser/getUser");
     }
 };
 </script>

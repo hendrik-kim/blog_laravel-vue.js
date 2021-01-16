@@ -19,4 +19,5 @@ Route::prefix('/user')->group(function(){
     Route::post('/login', 'Api\v1\LoginController@login');
     // Route::middleware('auth:api')->get('/all', 'Api\v1\UserController@index');
     Route::get('/all', 'Api\v1\user\UserController@index');
+    Route::get('/current', 'Api\v1\user\UserController@currentUser');
 });
